@@ -1,5 +1,5 @@
  // src/pages/Home.tsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import im1 from "../assets/t11.jpeg";
 import im2 from "../assets/t12.jpeg";
 import im3 from "../assets/t8.jpeg";
@@ -31,36 +31,60 @@ const images = [
 
 const Home: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const resetTimer = () => {
+    if (timerRef.current) clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % images.length);
+    }, 5000);
+  };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change every 5 seconds
-
-    return () => clearInterval(interval);
+    resetTimer();
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
   }, []);
 
-  const goToNext = () => setCurrentIndex((prev) => (prev + 1) % images.length);
-  const goToPrev = () =>
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
+  const goTo = (i: number) => { setCurrentIndex(i); resetTimer(); };
+  const goToPrev = () => goTo((currentIndex - 1 + images.length) % images.length);
+  const goToNext = () => goTo((currentIndex + 1) % images.length);
 
   return (
     <div className="flex flex-col">
-      {/* Hero Slider Section */}
-      <div className="relative h-screen w-full overflow-hidden">
-        {/* Image Background */}
-        <div className="absolute inset-0">
-          <img
-            src={images[currentIndex].src}
-            alt="Slide"
-            className="w-full h-full object-cover transition-opacity duration-700 ease-in-out"
-          />
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
-        </div>
 
-        {/* Content */}
-        <div className="relative h-full flex items-center justify-start z-10">
+      {/* ── Hero Slider ─────────────────────────── */}
+      <div className="relative h-screen w-full overflow-hidden bg-black">
+
+        {/* Sliding images — opacity fade only */}
+        {images.map((img, i) => (
+          <div
+            key={i}
+            className="absolute inset-0"
+            style={{
+              opacity:    i === currentIndex ? 1 : 0,
+              transition: "opacity 1s ease",
+              zIndex:     i === currentIndex ? 1 : 0,
+            }}
+          >
+            <img
+              src={img.src}
+              alt={`Slide ${i + 1}`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+
+        {/* ── Single constant overlay — sits above ALL slides, never moves ── */}
+        <div
+          className="absolute inset-0"
+          style={{
+            zIndex: 5,
+            background: "linear-gradient(to right, rgba(0,0,0,0.70) 0%, rgba(0,0,0,0.50) 50%, rgba(0,0,0,0.30) 100%)",
+          }}
+        />
+
+        {/* Content — above the overlay */}
+        <div className="relative h-full flex items-center justify-start" style={{ zIndex: 10 }}>
           <div className="max-w-2xl mx-auto pl-8 md:pl-16 text-white">
             {/* Badge */}
             <div className="mb-6 inline-block">
@@ -70,7 +94,7 @@ const Home: React.FC = () => {
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight animate-fade-in">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
               {images[currentIndex].title}
             </h1>
 
@@ -91,53 +115,36 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        {/* Navigation Buttons */}
+        {/* Prev button */}
         <button
           onClick={goToPrev}
-          className="absolute left-6 md:left-12 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300"
+          className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300"
+          style={{ zIndex: 20 }}
           aria-label="Previous slide"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
           </svg>
         </button>
 
+        {/* Next button */}
         <button
           onClick={goToNext}
-          className="absolute right-6 md:right-12 top-1/2 transform -translate-y-1/2 z-20 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300"
+          className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300"
+          style={{ zIndex: 20 }}
           aria-label="Next slide"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M9 5l7 7-7 7"
-            />
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </button>
 
-        {/* Slide Indicators */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex gap-2">
+        {/* Dot indicators */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2" style={{ zIndex: 20 }}>
           {images.map((_, index) => (
             <button
               key={index}
-              onClick={() => setCurrentIndex(index)}
+              onClick={() => goTo(index)}
               className={`h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex
                   ? "w-8 bg-customBlue-950"
@@ -148,27 +155,16 @@ const Home: React.FC = () => {
           ))}
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 right-8 z-20 animate-bounce">
-          <svg
-            className="w-6 h-6 text-white"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-            />
+        {/* Scroll indicator */}
+        <div className="absolute bottom-8 right-8 animate-bounce" style={{ zIndex: 20 }}>
+          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>
         </div>
       </div>
+
       <AboutUs />
-
       <OurServices />
-
       <Specialties />
       <OurProcess />
     </div>
