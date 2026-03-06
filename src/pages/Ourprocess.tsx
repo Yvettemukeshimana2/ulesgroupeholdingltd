@@ -7,7 +7,7 @@ const OurProcess: React.FC = () => {
       title: "Expertise",
       description: "Our team of highly skilled engineers brings a wealth of experience in Mechanical and MEP systems.",
       icon: "fa-cogs",
-      color: "from-blue-500 to-indigo-600"
+      color: "from-customBlue-950 to-black"
     },
     {
       title: "Reliability",
@@ -39,8 +39,8 @@ const OurProcess: React.FC = () => {
     <section className="py-20 bg-gradient-to-b from-gray-700 to-gray-600 relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-teal-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-500 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 left-10 w-72 h-72 bg-customBlue-950 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-customBlue-950 rounded-full blur-3xl"></div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
@@ -125,12 +125,12 @@ const OurProcess: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.6 }}
           className="text-center mt-16"
         >
-          <div className="bg-gradient-to-r from-teal-600 to-cyan-600 rounded-2xl p-8 text-white">
+          <div className="bg-gradient-to-r from-customBlue-950 to-black rounded-2xl p-8 text-white">
             <h3 className="text-3xl font-bold mb-4">Ready to Work with Us?</h3>
-            <p className="text-teal-100 mb-6 max-w-2xl mx-auto">
+            <p className="text-gray-100 mb-6 max-w-2xl mx-auto">
               Let's discuss how we can bring your engineering vision to life with our expertise and commitment to excellence.
             </p>
-            <button className="px-8 py-3 text-customBlue-950 bg-white text-teal-600 font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
+            <button className="px-8 py-3 text-customBlue-950 bg-white font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105">
               Get Started Today
             </button>
           </div>

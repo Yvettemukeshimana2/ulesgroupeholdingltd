@@ -42,29 +42,28 @@
 
    return (
      <header
-       className={`fixed top-0 left-0 z-50 w-full bg-white ${
-         isScrolled ? "bg-gradient-to-r text-white font-bold   shadow-sm  rounded-lg ml-2 mr-2" : ""
+       className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${
+         isScrolled ? "bg-white shadow-lg" : "bg-white"
        }`}
      >
-       <div className="max-w-6xl mx-auto px-4">
-         <div className="flex items-center p-10 justify-between h-16">
+       <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
+         <div className="flex items-center justify-between h-16 sm:h-20">
            {/* Logo */}
-           <Link to="/">
+           <Link to="/" className="flex items-center">
              <img
-               src= {logo}
-               alt="Logo"
-               className="h-56  w-72"
+               src={logo}
+               alt="Ules Group Holding LTD Logo"
+               className="h-10 sm:h-12 md:h-56 w-auto"
              />
            </Link>
 
            {/* Desktop Nav */}
-           <nav className="hidden md:flex gap-8">
+           <nav className="hidden md:flex gap-2 lg:gap-4">
              {navItems.map((item) => (
                <Link
                  key={item.to}
                  to={item.to}
-                 className="text-gray-700 hover:text-teal-600 transition-colors"
-                 onClick={() => isMenuOpen && toggleMenu()}
+                 className="text-xs lg:text-sm text-gray-700 hover:text-customBlue-950 transition-colors font-medium px-2 lg:px-3 py-2 rounded hover:bg-gray-100"
                >
                  {item.label}
                </Link>
@@ -74,21 +73,21 @@
            {/* Mobile Menu Button */}
            <button
              onClick={toggleMenu}
-             className="md:hidden p-2"
+             className="md:hidden p-2 text-customBlue-950"
              aria-label="Toggle menu"
            >
-             {isMenuOpen ? <X className="w-20 h-20"/> : <Menu className="w-20 h-20" />}
+             {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
            </button>
          </div>
 
          {/* Mobile Menu */}
          {isMenuOpen && (
-           <nav className="md:hidden py-2 bg-black flex flex-col text-white justify-center items-center shadow-lg rounded-b-lg">
+           <nav className="md:hidden pb-4 bg-white border-t border-gray-200 flex flex-col gap-1">
              {navItems.map((item) => (
                <Link
                  key={item.to}
                  to={item.to}
-                 className="block py-2 px-4 text-white hover:text-teal-600 hover:bg-gray-50 transition-colors"
+                 className="block py-2 px-4 text-sm text-gray-700 hover:text-customBlue-950 hover:bg-gray-50 transition-colors rounded"
                  onClick={toggleMenu}
                >
                  {item.label}

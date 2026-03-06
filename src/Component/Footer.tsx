@@ -39,23 +39,23 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
   return (
     <footer className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-teal-500/20 to-cyan-500/20"></div>
-        <div className="absolute -top-40 -right-40 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-customBlue-950/20 to-black/20"></div>
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-customBlue-950/10 rounded-full blur-3xl"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gray-700/10 rounded-full blur-3xl"></div>
       </div>
 
       <div className="relative z-10">
         {/* Main Footer Content */}
         <div className="max-w-7xl mx-auto px-4 py-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+          <div className="grid grid-cols-4 gap-8 mb-12">
             {/* Company Info */}
             <div className="space-y-6">
               <div>
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-customBlue-950 bg-clip-text text-transparent mb-4">
                   {companyName}
                 </h3>
-                <p className="text-gray-300 leading-relaxed">
+                <p className="text-base text-gray-300 leading-relaxed">
                   Leading provider of engineering excellence and innovative solutions since {year}.
                   Committed to delivering quality and innovation in every project.
                 </p>
@@ -64,13 +64,13 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
               {/* Newsletter Signup */}
               <div>
                 <h4 className="text-lg font-semibold mb-3 text-white">Stay Updated</h4>
-                <div className="flex space-x-2">
+                <div className="flex flex-row gap-2">
                   <input
                     type="email"
-                    placeholder="Enter your email"
-                    className="flex-1 px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:border-transparent"
+                    placeholder="Your email"
+                    className="flex-1 px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-customBlue-950 text-sm"
                   />
-                  <button className="px-6 py-2 bg-gradient-to-r from-teal-500 to-cyan-500 text-white font-semibold rounded-lg hover:from-teal-600 hover:to-cyan-600 transition-all duration-300 transform hover:scale-105">
+                  <button className="px-6 py-2 bg-customBlue-950 hover:bg-black text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 text-sm">
                     Subscribe
                   </button>
                 </div>
@@ -79,7 +79,7 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
 
             {/* Useful Links */}
             <div>
-              <h4 className="text-xl font-bold mb-6 text-white border-b-2 border-teal-500 pb-2 inline-block">
+              <h4 className="text-lg font-bold mb-6 text-white border-b-2 border-customBlue-950 pb-2 inline-block">
                 Useful Links
               </h4>
               <ul className="space-y-3">
@@ -89,7 +89,7 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-gray-300 hover:text-teal-400 transition-colors duration-300 flex items-center group"
+                        className="text-base text-gray-300 hover:text-customBlue-950 transition-colors duration-300 flex items-center group"
                       >
                         <i className="fa fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
                         {link.label}
@@ -101,7 +101,7 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
 
             {/* Services */}
             <div>
-              <h4 className="text-xl font-bold mb-6 text-white border-b-2 border-teal-500 pb-2 inline-block">
+              <h4 className="text-lg font-bold mb-6 text-white border-b-2 border-customBlue-950 pb-2 inline-block">
                 Our Services
               </h4>
               <ul className="space-y-3">
@@ -111,7 +111,7 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-gray-300 hover:text-teal-400 transition-colors duration-300 flex items-center group"
+                        className="text-base text-gray-300 hover:text-customBlue-950 transition-colors duration-300 flex items-center group"
                       >
                         <i className="fa fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
                         {link.label}
@@ -123,28 +123,28 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
 
             {/* Contact Info */}
             <div>
-              <h4 className="text-xl font-bold mb-6 text-white border-b-2 border-teal-500 pb-2 inline-block">
+              <h4 className="text-lg font-bold mb-6 text-white border-b-2 border-customBlue-950 pb-2 inline-block">
                 Contact Us
               </h4>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <i className="fa fa-phone text-teal-400 mt-1"></i>
-                  <div>
+                  <i className="fa fa-phone text-customBlue-950 mt-1 flex-shrink-0"></i>
+                  <div className="min-w-0">
                     <p className="text-gray-300 text-sm">Phone Numbers</p>
-                    <p className="text-white">+250 789 319 155</p>
-                    <p className="text-white">+250 787 042 094</p>
+                    <p className="text-white text-sm break-words">+250 789 319 155</p>
+                    <p className="text-white text-sm break-words">+250 787 042 094</p>
                   </div>
                 </div>
 
                 <div className="flex items-start space-x-3">
-                  <i className="fa fa-envelope text-teal-400 mt-1"></i>
-                  <div>
+                  <i className="fa fa-envelope text-customBlue-950 mt-1 flex-shrink-0"></i>
+                  <div className="min-w-0">
                     <p className="text-gray-300 text-sm">Email</p>
                     <a
-                      href="mailto:nexgene24@gmail.com"
-                      className="text-white hover:text-teal-400 transition-colors duration-300"
+                      href="mailto:info@ulesgroupholding.com"
+                      className="text-white hover:text-customBlue-950 transition-colors duration-300 text-sm break-words"
                     >
-                      ulesgroupeholdingltd.com
+                      info@ulesgroupholding.com
                     </a>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
 
           {/* Social Media & Bottom Section */}
           <div className="border-t border-gray-700 pt-8">
-            <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+            <div className="flex flex-row justify-between items-center space-y-0">
               {/* Social Media Links */}
               <div className="flex items-center space-x-6">
                 <div className="flex items-center space-x-3">
@@ -190,7 +190,7 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
               </div>
 
               {/* Copyright */}
-              <div className="text-center md:text-right">
+              <div className="text-right">
                 <p className="text-gray-400 text-sm">
                   © {year} <span className="text-teal-400 font-semibold">{companyName}</span>. All rights reserved.
                 </p>

@@ -250,7 +250,7 @@ const ContactUsPage: React.FC = () => {
             <div className="text-center pt-4">
               <button
                 type="submit"
-                className="submit-btn px-12 py-4 bg-gradient-to-r from-teal-500 to-cyan-600 text-customBlue-950  font-bold text-lg rounded-xl hover:from-teal-600 hover:to-cyan-700 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
+                className="submit-btn px-12 py-4 bg-customBlue-950 hover:bg-black text-white font-bold text-lg rounded-xl transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-lg hover:shadow-xl"
               >
                 <i className="fa fa-paper-plane mr-2"></i>
                 Send Message

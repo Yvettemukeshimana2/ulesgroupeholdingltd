@@ -19,7 +19,7 @@ const MenuItem: React.FC<MenuItemProps> = ({
     <Link
       to={address}
       onClick={onClick}
-      className="flex items-center gap-2 p-2 pb-4 hover:text-customTeal-950 hover:p-2 rounded font-semibold text-black"
+      className="flex items-center gap-2 p-2 pb-4 hover:text-customBlue-950 hover:p-2 rounded font-semibold text-black"
     >
       <Icon className="w-5 h-5 sm:hidden" />
       <span>{title}</span>

@@ -94,7 +94,7 @@ const OurServices: React.FC = () => {
             {displayedText.length < fullText.length && <span className="typing-cursor"></span>}
           </h1>
           <div className="flex justify-center mb-6">
-            <div className="h-1 w-24 bg-gradient-to-r from-teal-500 to-teal-700 rounded-full"></div>
+            <div className="h-1 w-24 bg-gradient-to-r from-customBlue-950 to-black rounded-full"></div>
           </div>
           <p className="text-xl text-gray-600  mx-auto">
             We provide comprehensive solutions designed to meet your business needs with excellence and innovation.
@@ -121,7 +121,7 @@ const OurServices: React.FC = () => {
               {/* Content Container */}
               <div className="p-6 flex flex-col flex-grow">
                 {/* Title */}
-                <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-teal-700 transition-colors duration-300">
+                <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-customBlue-950 transition-colors duration-300">
                   {service.title}
                 </h2>
 
@@ -134,7 +134,7 @@ const OurServices: React.FC = () => {
                 <div className="mb-6 space-y-2">
                   {service.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center text-sm text-gray-700">
-                      <i className="fa fa-check text-teal-600 mr-2"></i>
+                      <i className="fa fa-check text-customBlue-950 mr-2"></i>
                       <span>{feature}</span>
                     </div>
                   ))}
@@ -142,7 +142,7 @@ const OurServices: React.FC = () => {
 
                 {/* Button */}
                 <Link to={service.link} className="mt-auto">
-                  <button className="w-full py-3 px-4 bg-gradient-to-r from-teal-600 to-teal-700 text-white font-semibold rounded-lg hover:from-teal-700 hover:to-teal-800 transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg">
+                  <button className="w-full py-3 px-4 bg-customBlue-950 hover:bg-black text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg">
                     Learn More
                   </button>
                 </Link>
@@ -154,12 +154,12 @@ const OurServices: React.FC = () => {
 
       {/* CTA Section */}
       <div className="max-w-7xl mx-auto px-4 bg-gradient-to-b from-gray-700 to-gray-600 ">
-        <div className="bg-gradient-to-r from-teal-600 to-cyan-600 rounded-xl overflow-hidden shadow-2xl">
+        <div className="bg-gradient-to-r from-customBlue-950 to-black rounded-xl overflow-hidden shadow-2xl">
           <div className="py-12 px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Explore All Our Services
             </h2>
-            <p className="text-teal-100 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-100 text-lg mb-8 max-w-2xl mx-auto">
               Discover our complete range of solutions and find the perfect fit for your organization.
             </p>
             <Link to="/venue">

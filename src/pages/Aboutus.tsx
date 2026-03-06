@@ -32,28 +32,28 @@ const coreValues: CoreValue[] = [
     description:
       "We continuously adopt and implement cutting-edge technologies and processes to offer the most efficient solutions.",
     icon: "💡",
-    color: "from-blue-500 to-blue-600",
+    color: "from-customBlue-950 to-black",
   },
   {
     title: "Integrity",
     description:
       "We operate with transparency and honesty, ensuring that every interaction and transaction is conducted with the utmost professionalism.",
     icon: "🤝",
-    color: "from-cyan-500 to-blue-500",
+    color: "from-customBlue-950 to-black",
   },
   {
     title: "Quality",
     description:
       "Our work is defined by excellence. We are committed to delivering long-lasting, high-quality results in every project.",
     icon: "⭐",
-    color: "from-indigo-500 to-blue-600",
+    color: "from-customBlue-950 to-black",
   },
   {
     title: "Safety First",
     description:
       "Safety is central to everything we do. We adhere to strict safety regulations and industry standards to ensure the well-being of both our team and our clients.",
     icon: "🛡️",
-    color: "from-violet-500 to-indigo-600",
+    color: "from-customBlue-950 to-black",
   },
 ];
 
@@ -72,7 +72,7 @@ const StatCard: React.FC<StatProps> = ({ number, label, index }) => (
     transition={{ duration: 0.6, delay: index * 0.1 }}
     className="text-center"
   >
-    <p className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent mb-2">
+    <p className="text-4xl sm:text-5xl md:text-6xl font-bold bg-gradient-to-r from-customBlue-950 to-black bg-clip-text text-transparent mb-2">
       {number}
     </p>
     <p className="text-gray-600 text-base sm:text-lg font-semibold">{label}</p>
@@ -140,9 +140,9 @@ const ValueCard: React.FC<ValueCardProps> = ({
        >
          {/* Background Pattern */}
          <div className="absolute inset-0 opacity-20">
-           <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
-           <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
-           <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
+           <div className="absolute top-0 left-0 w-96 h-96 bg-customBlue-950 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+           <div className="absolute top-0 right-0 w-96 h-96 bg-black rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+           <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-gray-800 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
          </div>
 
          {/* Content */}
@@ -153,13 +153,13 @@ const ValueCard: React.FC<ValueCardProps> = ({
              transition={{ duration: 0.8, delay: 0.2 }}
              className="text-5xl sm:text-5xl md:text-5xl font-bold text-black mb-6 leading-tight"
            >
-             About <span className="bg-gradient-to-r from-customBlue-950 to-blue-800 bg-clip-text text-transparent">Ules Holding Group Ltd</span>
+             About <span className="bg-gradient-to-r from-customBlue-950 to-black bg-clip-text text-transparent">Ules Holding Group Ltd</span>
            </motion.h1>
            <motion.p
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.8, delay: 0.4 }}
-             className="text-sm sm:text-2xl text-blue-800 max-w-3xl mx-auto leading-relaxed"
+             className="text-sm sm:text-2xl text-customBlue-950 max-w-3xl mx-auto leading-relaxed"
            >
              Delivering Innovative Manufacturing, Mechanical & MEP Solutions
            </motion.p>
@@ -169,7 +169,7 @@ const ValueCard: React.FC<ValueCardProps> = ({
        {/* Stats Section */}
        <motion.div
          {...fadeInUp}
-         className="px-4 md:px-6 py-12 md:py-16 bg-gradient-to-r from-blue-50 to-indigo-50"
+         className="px-4 md:px-6 py-12 md:py-16 bg-white"
        >
          <div className="grid grid-cols-2 sm:grid-cols-4 gap-8">
            {stats.map((stat, index) => (
@@ -191,9 +191,9 @@ const ValueCard: React.FC<ValueCardProps> = ({
              transition={{ duration: 0.8 }}
              className="relative group"
            >
-             <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-300"></div>
+             <div className="absolute inset-0 bg-gradient-to-r from-customBlue-950 to-black rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-300"></div>
              <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden">
-               <div className="h-2 bg-gradient-to-r from-blue-600 to-cyan-600"></div>
+               <div className="h-2 bg-gradient-to-r from-customBlue-950 to-black"></div>
                <div className="p-8 md:p-10">
                  <div className="flex items-center gap-4 mb-6">
                    <span className="text-3xl">🎯</span>
@@ -215,9 +215,9 @@ const ValueCard: React.FC<ValueCardProps> = ({
              transition={{ duration: 0.8 }}
              className="relative group"
            >
-             <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-300"></div>
+             <div className="absolute inset-0 bg-gradient-to-r from-customBlue-950 to-black rounded-2xl blur-lg opacity-75 group-hover:opacity-100 transition duration-300"></div>
              <div className="relative bg-white rounded-2xl shadow-xl overflow-hidden">
-               <div className="h-2 bg-gradient-to-r from-indigo-600 to-purple-600"></div>
+               <div className="h-2 bg-gradient-to-r from-customBlue-950 to-black"></div>
                <div className="p-8 md:p-10">
                  <div className="flex items-center gap-4 mb-6">
                    <span className="text-3xl">🌟</span>
@@ -247,7 +247,7 @@ const ValueCard: React.FC<ValueCardProps> = ({
                transition={{ duration: 0.6 }}
                className="text-4xl sm:text-5xl md:text-3xl font-bold text-gray-900 mb-4"
              >
-               Our <span className="bg-gradient-to-r from-customBlue-950 to-indigo-600 bg-clip-text text-transparent">Core Values</span>
+               Our <span className="bg-gradient-to-r from-customBlue-950 to-black bg-clip-text text-transparent">Core Values</span>
              </motion.h2>
              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                The principles that guide every decision and action we take in delivering excellence
@@ -282,7 +282,7 @@ const ValueCard: React.FC<ValueCardProps> = ({
                transition={{ duration: 0.6 }}
                className="text-4xl sm:text-5xl md:text-4xl font-bold text-gray-900 mb-4"
              >
-               Why Choose <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">ULES Group Holding LTD?</span>
+               Why Choose <span className="bg-gradient-to-r from-customBlue-950 to-black bg-clip-text text-transparent">ULES Group Holding LTD?</span>
              </motion.h2>
              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                Experience engineering excellence combined with innovation and reliability
@@ -327,7 +327,7 @@ const ValueCard: React.FC<ValueCardProps> = ({
                  initial={{ opacity: 0, y: 20 }}
                  whileInView={{ opacity: 1, y: 0 }}
                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                 className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 transition-all duration-300 border border-gray-200 hover:border-blue-400"
+                 className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl p-8 transition-all duration-300 border border-gray-200 hover:border-customBlue-950"
                >
                  <div className="text-5xl mb-4 transform group-hover:scale-110 group-hover:-rotate-6 transition-transform duration-300">
                    {item.icon}
@@ -338,7 +338,7 @@ const ValueCard: React.FC<ValueCardProps> = ({
                  <p className="text-gray-600 leading-relaxed">
                    {item.description}
                  </p>
-                 <div className="mt-4 h-1 w-12 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-full group-hover:w-full transition-all duration-300"></div>
+                 <div className="mt-4 h-1 w-12 bg-gradient-to-r from-customBlue-950 to-black rounded-full group-hover:w-full transition-all duration-300"></div>
                </motion.div>
              ))}
            </div>

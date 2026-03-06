@@ -91,7 +91,7 @@
                  />
                </div>
                <div className="p-6 flex flex-col flex-grow">
-                 <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-teal-700 transition-colors duration-300">
+                 <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-customBlue-950 transition-colors duration-300">
                    {service.title}
                  </h2>
                  <p className="text-gray-600 text-sm mb-4 flex-grow">
@@ -100,7 +100,7 @@
                  <div className="mb-4 space-y-2">
                    {service.features.map((f, fi) => (
                      <div key={fi} className="flex items-center text-sm text-gray-700">
-                       <i className="fa fa-check text-teal-600 mr-2"></i>{f}
+                       <i className="fa fa-check text-customBlue-950 mr-2"></i>{f}
                      </div>
                    ))}
                  </div>
@@ -110,7 +110,7 @@
                    rel="noopener noreferrer"
                    className="mt-auto"
                  >
-                   <button className="w-32 py-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white bg-customBlue-950 font-semibold rounded-lg hover:from-teal-700 hover:to-teal-800 transition-all duration-300 transform hover:scale-105">
+                   <button className="w-32 py-3 bg-customBlue-950 text-white font-semibold rounded-lg hover:bg-black transition-all duration-300 transform hover:scale-105">
                      More Details
                    </button>
                  </a>

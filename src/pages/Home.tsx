@@ -64,7 +64,7 @@ const Home: React.FC = () => {
           <div className="max-w-2xl mx-auto pl-8 md:pl-16 text-white">
             {/* Badge */}
             <div className="mb-6 inline-block">
-              <span className="bg-blue-600/80 text-white px-4 py-2 rounded-full text-sm font-semibold">
+              <span className="bg-customBlue-950 text-white px-4 py-2 rounded-full text-sm font-semibold">
                 Elevating Engineering Excellence
               </span>
             </div>
@@ -81,10 +81,10 @@ const Home: React.FC = () => {
 
             {/* CTA Buttons */}
             <div className="flex gap-4 flex-wrap">
-              <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+              <button className="bg-customBlue-950 hover:bg-black text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
                 Request Consultation
               </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+              <button className="border-2 border-white text-white hover:bg-white hover:text-customBlue-950 px-8 py-3 rounded-lg font-semibold transition-all duration-300">
                 Learn More
               </button>
             </div>
@@ -140,7 +140,7 @@ const Home: React.FC = () => {
               onClick={() => setCurrentIndex(index)}
               className={`h-3 rounded-full transition-all duration-300 ${
                 index === currentIndex
-                  ? "w-8 bg-blue-600"
+                  ? "w-8 bg-customBlue-950"
                   : "w-3 bg-white/50 hover:bg-white/75"
               }`}
               aria-label={`Go to slide ${index + 1}`}
