@@ -112,7 +112,7 @@ const TeamPage = () => {
       letter-spacing: -1px;
     }
     .heading-secondary {
-      background: linear-gradient(135deg, #0f766e 0%, #14b8a6 100%);
+      background: linear-gradient(#0a2472 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
