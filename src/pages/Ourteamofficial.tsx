@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import t1 from "../assets/byimana.jpeg";
 import t2 from "../assets/dave.jpeg";
 import yv from "../assets/yvette.jpg";
+import will from "../assets/will.jpeg";
 import team from "../assets/t1.jpeg"
 
 const teamMembers = [
@@ -45,7 +46,7 @@ const teamMembers = [
   {
     name: "Hirwa Will",
     title: "IT Support specialist",
-    image:"",
+    image:will,
     description:  "Dedicated IT support specialist ensuring seamless technology operation and exceptional user experience",
     email: "mailto:bosco@ulesholdingltd.com",
     linkedin: "https://linkedin.com",
