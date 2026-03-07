@@ -8,21 +8,22 @@ const services = [
     title: "Industrial Air Purification",
     description: "State-of-the-art air purification systems for industrial environments ensuring clean and safe workspace.",
     features: ["HEPA Filtration", "Real-time Monitoring", "Energy Efficient"],
-    link: "/services/2",
+    // link: "/services/2",
+    link: "https://ulesgrooupacademics.com/",
   },
   {
     img: im3,
     title: "Consultation & Implementation",
     description: "Expert consultation and seamless implementation of solutions tailored to your business needs.",
     features: ["Custom Solutions", "Expert Guidance", "Full Support"],
-    link: "/services/3",
+    link: "https://ulesgrooupacademics.com/",
   },
   {
     img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVtDsjwnJfT2i0_VbG46bhZsuBmki76bwL2A&s",
     title: "OSH and Mechanical Training",
     description: "Comprehensive occupational safety & health and mechanical training programs for your workforce.",
     features: ["Certified Trainers", "Hands-on Training", "Certification"],
-    link: "/services/4",
+    link: "https://ulesgrooupacademics.com/",
   },
 ];
 
