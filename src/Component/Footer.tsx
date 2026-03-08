@@ -131,8 +131,8 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
                   <i className="fa fa-phone text-customBlue-950 mt-1 flex-shrink-0"></i>
                   <div className="min-w-0">
                     <p className="text-gray-300 text-sm">Phone Numbers</p>
-                    <p className="text-white text-sm break-words">+250 789 319 155</p>
-                    <p className="text-white text-sm break-words">+250 787 042 094</p>
+                    <p className="text-white text-sm break-words">+250 788 302 619</p>
+                    {/* <p className="text-white text-sm break-words"></p> */}
                   </div>
                 </div>
 
