@@ -103,15 +103,15 @@ const ContactUsPage: React.FC = () => {
                 <i className="fa fa-envelope text-2xl text-teal-600 mt-1"></i>
                 <div>
                   <h3 className="font-semibold text-gray-900">Email</h3>
-                  <p className="text-gray-600">nexgene24@gmail.com</p>
+                  <p className="text-gray-600">ulesgroupholdingltd.com</p>
                 </div>
               </div>
               <div className="flex items-start space-x-4">
                 <i className="fa fa-phone text-2xl text-teal-600 mt-1"></i>
                 <div>
                   <h3 className="font-semibold text-gray-900">Phone</h3>
-                  <p className="text-gray-600">+250 789 319 155</p>
-                  <p className="text-gray-600">+250 787 042 094</p>
+                  <p className="text-gray-600">+250 788 302619</p>
+                  <p className="text-gray-600"></p>
                 </div>
               </div>
             </div>
