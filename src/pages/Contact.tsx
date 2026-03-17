@@ -90,7 +90,7 @@ const ContactUsPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Information */}
           <div className="contact-section bg-white rounded-xl shadow-lg p-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Corporate Office</h2>
+            <h2 className="text-3xl font-bold text-gray-900 mb-6">Corporate office</h2>
             <div className="space-y-4">
               <div className="flex items-start space-x-4">
                 <i className="fa fa-map-marker text-2xl text-teal-600 mt-1"></i>
