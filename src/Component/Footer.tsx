@@ -1,5 +1,6 @@
-import React from "react";
+ import React from "react";
 import logo from "../assets/Ules logo-01.png";
+import { FaFacebookF, FaTwitter, FaInstagram, FaLinkedinIn, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 
 interface FooterProps {
   companyName: string;
@@ -12,28 +13,16 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
     { href: "/about", label: "About", category: "Useful Links" },
     { href: "/contact", label: "Contact", category: "Useful Links" },
     { href: "/team", label: "Our Team", category: "Useful Links" },
-    {
-      href: "/venue",
-      label: "Industrial Air Purification",
-      category: "Services",
-    },
-    {
-      href: "/venue",
-      label: "Consultation & Implementation",
-      category: "Services",
-    },
-    {
-      href: "/venue",
-      label: "OSH and Mechanical Training",
-      category: "Services",
-    },
+    { href: "/venue", label: "Industrial Air Purification", category: "Services" },
+    { href: "/venue", label: "Consultation & Implementation", category: "Services" },
+    { href: "/venue", label: "OSH and Mechanical Training", category: "Services" },
   ];
 
   const socialLinks = [
-    { name: "Facebook", icon: "fa-facebook-f", href: "https://facebook.com", color: "hover:text-blue-400" },
-    { name: "Twitter", icon: "fa-twitter", href: "https://twitter.com", color: "hover:text-sky-400" },
-    { name: "Instagram", icon: "fa-instagram", href: "https://instagram.com", color: "hover:text-pink-400" },
-    { name: "LinkedIn", icon: "fa-linkedin-in", href: "https://linkedin.com", color: "hover:text-blue-500" },
+    { name: "Facebook", icon: <FaFacebookF />, href: "https://facebook.com", color: "hover:text-blue-400" },
+    { name: "Twitter", icon: <FaTwitter />, href: "https://twitter.com", color: "hover:text-sky-400" },
+    { name: "Instagram", icon: <FaInstagram />, href: "https://instagram.com", color: "hover:text-pink-400" },
+    { name: "LinkedIn", icon: <FaLinkedinIn />, href: "https://linkedin.com", color: "hover:text-blue-500" },
   ];
 
   return (
@@ -46,20 +35,17 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
       </div>
 
       <div className="relative z-10">
-        {/* Main Footer Content */}
         <div className="max-w-7xl mx-auto px-4 py-16">
           <div className="grid grid-cols-4 gap-8 mb-12">
             {/* Company Info */}
             <div className="space-y-6">
-              <div>
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-customBlue-950 bg-clip-text text-transparent mb-4">
-                  {companyName}
-                </h3>
-                <p className="text-base text-gray-300 leading-relaxed">
-                  Leading provider of engineering excellence and innovative solutions since {year}.
-                  Committed to delivering quality and innovation in every project.
-                </p>
-              </div>
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-customBlue-950 bg-clip-text text-transparent mb-4">
+                {companyName}
+              </h3>
+              <p className="text-base text-gray-300 leading-relaxed">
+                Leading provider of engineering excellence and innovative solutions since {year}.
+                Committed to delivering quality and innovation in every project.
+              </p>
 
               {/* Newsletter Signup */}
               <div>
@@ -91,7 +77,7 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
                         href={link.href}
                         className="text-base text-gray-300 hover:text-customBlue-950 transition-colors duration-300 flex items-center group"
                       >
-                        <i className="fa fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        <span className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">›</span>
                         {link.label}
                       </a>
                     </li>
@@ -113,7 +99,7 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
                         href={link.href}
                         className="text-base text-gray-300 hover:text-customBlue-950 transition-colors duration-300 flex items-center group"
                       >
-                        <i className="fa fa-chevron-right text-xs mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></i>
+                        <span className="mr-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">›</span>
                         {link.label}
                       </a>
                     </li>
@@ -122,82 +108,75 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
             </div>
 
             {/* Contact Info */}
-            <div>
+            <div className="space-y-4">
               <h4 className="text-lg font-bold mb-6 text-white border-b-2 border-customBlue-950 pb-2 inline-block">
                 Contact Us
               </h4>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <i className="fa fa-phone text-customBlue-950 mt-1 flex-shrink-0"></i>
-                  <div className="min-w-0">
-                    <p className="text-gray-300 text-sm">Phone Numbers</p>
-                    <p className="text-white text-sm break-words">+250 788 302 619</p>
-                    {/* <p className="text-white text-sm break-words"></p> */}
-                  </div>
-                </div>
 
-                <div className="flex items-start space-x-3">
-                  <i className="fa fa-envelope text-customBlue-950 mt-1 flex-shrink-0"></i>
-                  <div className="min-w-0">
-                    <p className="text-gray-300 text-sm">Email</p>
-                    <a
-                      href="mailto:info@ulesgroupholding.com"
-                      className="text-white hover:text-customBlue-950 transition-colors duration-300 text-sm break-words"
-                    >
-                      info@ulesgroupholding.com
-                    </a>
-                  </div>
+              <div className="flex items-start space-x-3">
+                <FaPhone className="text-customBlue-950 mt-1 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-300 text-sm">Phone Numbers</p>
+                  <p className="text-white text-sm break-words">+250 788 302 619</p>
                 </div>
+              </div>
 
-                <div className="flex items-start space-x-3">
-                  <i className="fa fa-map-marker-alt text-teal-400 mt-1"></i>
-                  <div>
-                    <p className="text-gray-300 text-sm">Address</p>
-                    <p className="text-white">Kigali, Gasabo, Ndera</p>
-                  </div>
+              <div className="flex items-start space-x-3">
+                <FaEnvelope className="text-customBlue-950 mt-1 flex-shrink-0" />
+                <div>
+                  <p className="text-gray-300 text-sm">Email</p>
+                  <a
+                    href="mailto:info@ulesgroupholding.com"
+                    className="text-white hover:text-customBlue-950 transition-colors duration-300 text-sm break-words"
+                  >
+                    info@ulesgroupholding.com
+                  </a>
+                </div>
+              </div>
+
+              <div className="flex items-start space-x-3">
+                <FaMapMarkerAlt className="text-teal-400 mt-1" />
+                <div>
+                  <p className="text-gray-300 text-sm">Address</p>
+                  <p className="text-white">Kigali, Gasabo, Ndera</p>
                 </div>
               </div>
             </div>
           </div>
 
           {/* Social Media & Bottom Section */}
-          <div className="border-t border-gray-700 pt-8">
-            <div className="flex flex-row justify-between items-center space-y-0">
-              {/* Social Media Links */}
-              <div className="flex items-center space-x-6">
-                <div className="flex items-center space-x-3">
-                  <img
-                    src={logo}
-                    alt="Ules Group Holding Ltd Logo"
-                    className="w-12 h-12 object-contain bg-white rounded-lg p-1 shadow-lg"
-                  />
-                  <span className="text-gray-300 font-medium text-lg">Follow Us:</span>
-                </div>
-                <div className="flex space-x-4">
-                  {socialLinks.map((social) => (
-                    <a
-                      key={social.name}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 ${social.color} transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-xl`}
-                      aria-label={social.name}
-                    >
-                      <i className={`fab ${social.icon} text-lg`}></i>
-                    </a>
-                  ))}
-                </div>
-              </div>
+          <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+            <div className="flex items-center space-x-4">
+              <img
+                src={logo}
+                alt={`${companyName} Logo`}
+                className="w-12 h-12 object-contain bg-white rounded-lg p-1 shadow-lg"
+              />
+              <span className="text-gray-300 font-medium text-lg">Follow Us:</span>
 
-              {/* Copyright */}
-              <div className="text-right">
-                <p className="text-gray-400 text-sm">
-                  © {year} <span className="text-teal-400 font-semibold">{companyName}</span>. All rights reserved.
-                </p>
-                <p className="text-gray-500 text-xs mt-1">
-                  Built with excellence and innovation
-                </p>
+              <div className="flex space-x-4">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.name}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center text-white ${social.color} transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 shadow-lg hover:shadow-xl`}
+                    aria-label={social.name}
+                  >
+                    {social.icon}
+                  </a>
+                ))}
               </div>
+            </div>
+
+            <div className="text-right">
+              <p className="text-gray-400 text-sm">
+                © {year} <span className="text-teal-400 font-semibold">{companyName}</span>. All rights reserved.
+              </p>
+              <p className="text-gray-500 text-xs mt-1">
+                Built with excellence and innovation
+              </p>
             </div>
           </div>
         </div>
@@ -218,6 +197,6 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
       </div>
     </footer>
   );
- };
+};
 
- export default Footer;
+export default Footer;
