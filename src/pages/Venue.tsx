@@ -65,12 +65,12 @@
        <style>{styles}</style>
 
        {/* Header */}
-       <div className="max-w-7xl mx-auto px-4 text-center mb-12">
-         <h1 className="text-4xl md:text-5xl font-bold heading-gradient mb-4 min-h-20">
+       <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center mb-12">
+         <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold heading-gradient mb-4 min-h-[4.5rem] sm:min-h-20">
            {displayedText}
            {displayedText.length < fullText.length && <span className="typing-cursor"></span>}
          </h1>
-         <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+         <p className="text-base sm:text-lg text-gray-600 max-w-3xl mx-auto px-1">
            Explore a selection of our core offerings with detailed information available through the links below.
          </p>
        </div>
@@ -94,12 +94,12 @@
                  <h2 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-customBlue-950 transition-colors duration-300">
                    {service.title}
                  </h2>
-                 <p className="text-gray-600 text-sm mb-4 flex-grow">
+                 <p className="text-gray-600 text-base mb-4 flex-grow">
                    {service.description}
                  </p>
                  <div className="mb-4 space-y-2">
                    {service.features.map((f, fi) => (
-                     <div key={fi} className="flex items-center text-sm text-gray-700">
+                     <div key={fi} className="flex items-center text-base text-gray-700">
                        <i className="fa fa-check text-customBlue-950 mr-2"></i>{f}
                      </div>
                    ))}
@@ -110,7 +110,7 @@
                    rel="noopener noreferrer"
                    className="mt-auto"
                  >
-                   <button className="w-32 py-3 bg-customBlue-950 text-white font-semibold rounded-lg hover:bg-black transition-all duration-300 transform hover:scale-105">
+                   <button type="button" className="w-full sm:w-auto min-w-[8rem] min-h-[48px] py-3.5 px-4 text-base bg-customBlue-950 text-white font-semibold rounded-lg hover:bg-black transition-all duration-300 transform hover:scale-105">
                      More Details
                    </button>
                  </a>

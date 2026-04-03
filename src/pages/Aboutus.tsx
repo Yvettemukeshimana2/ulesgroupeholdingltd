@@ -151,7 +151,7 @@ const ValueCard: React.FC<ValueCardProps> = ({
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.8, delay: 0.2 }}
-             className="text-5xl sm:text-5xl md:text-5xl font-bold text-black mb-6 leading-tight"
+             className="text-3xl sm:text-4xl md:text-5xl font-bold text-black mb-6 leading-tight px-2"
            >
              About <span className="bg-gradient-to-r from-customBlue-950 to-black bg-clip-text text-transparent">Ules Holding Group Ltd</span>
            </motion.h1>
@@ -159,7 +159,7 @@ const ValueCard: React.FC<ValueCardProps> = ({
              initial={{ opacity: 0, y: 20 }}
              animate={{ opacity: 1, y: 0 }}
              transition={{ duration: 0.8, delay: 0.4 }}
-             className="text-sm sm:text-2xl text-customBlue-950 max-w-3xl mx-auto leading-relaxed"
+             className="text-lg sm:text-xl md:text-2xl text-customBlue-950 max-w-3xl mx-auto leading-relaxed px-2"
            >
              Delivering Innovative Manufacturing, Mechanical & MEP Solutions
            </motion.p>

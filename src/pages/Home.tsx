@@ -52,8 +52,8 @@ const Home: React.FC = () => {
   return (
     <div className="flex flex-col">
 
-      {/* ── Hero Slider ─────────────────────────── */}
-      <div className="relative h-screen w-full overflow-hidden bg-black">
+      {/* ── Hero Slider — height fits viewport below fixed nav ─────────────────────────── */}
+      <div className="relative min-h-[calc(100dvh-4rem)] sm:min-h-[calc(100dvh-5rem)] w-full overflow-hidden bg-black">
 
         {/* Sliding images — opacity fade only */}
         {images.map((img, i) => (
@@ -84,31 +84,31 @@ const Home: React.FC = () => {
         />
 
         {/* Content — above the overlay */}
-        <div className="relative h-full flex items-center justify-start" style={{ zIndex: 10 }}>
-          <div className="max-w-2xl mx-auto pl-8 md:pl-16 text-white">
+        <div className="relative h-full min-h-[inherit] flex items-center justify-start" style={{ zIndex: 10 }}>
+          <div className="w-full max-w-2xl mx-auto px-4 sm:px-6 md:pl-16 md:pr-8 text-white py-8 sm:py-10">
             {/* Badge */}
-            <div className="mb-6 inline-block">
-              <span className="bg-customBlue-950 text-white px-4 py-2 rounded-full text-sm font-semibold">
+            <div className="mb-4 sm:mb-6 inline-block">
+              <span className="bg-customBlue-950 text-white px-3 py-2 sm:px-4 sm:py-2 rounded-full text-sm sm:text-base font-semibold">
                 Elevating Engineering Excellence
               </span>
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
               {images[currentIndex].title}
             </h1>
 
             {/* Description */}
-            <p className="text-lg md:text-xl text-gray-200 mb-8 leading-relaxed max-w-xl">
+            <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-8 leading-relaxed max-w-xl">
               {images[currentIndex].description}
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex gap-4 flex-wrap">
-              <button className="bg-customBlue-950 hover:bg-black text-white px-8 py-3 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105">
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 flex-wrap">
+              <button type="button" className="w-full sm:w-auto min-h-[48px] text-center bg-customBlue-950 hover:bg-black text-white px-6 sm:px-8 py-3.5 rounded-lg text-base font-semibold transition-all duration-300 transform hover:scale-105">
                 Request Consultation
               </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-customBlue-950 px-8 py-3 rounded-lg font-semibold transition-all duration-300">
+              <button type="button" className="w-full sm:w-auto min-h-[48px] text-center border-2 border-white text-white hover:bg-white hover:text-customBlue-950 px-6 sm:px-8 py-3.5 rounded-lg text-base font-semibold transition-all duration-300">
                 Learn More
               </button>
             </div>
@@ -118,7 +118,7 @@ const Home: React.FC = () => {
         {/* Prev button */}
         <button
           onClick={goToPrev}
-          className="absolute left-6 md:left-12 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300"
+          className="absolute left-2 sm:left-6 md:left-12 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 min-w-[44px] min-h-[44px] rounded-full transition-all duration-300 flex items-center justify-center"
           style={{ zIndex: 20 }}
           aria-label="Previous slide"
         >
@@ -130,7 +130,7 @@ const Home: React.FC = () => {
         {/* Next button */}
         <button
           onClick={goToNext}
-          className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 rounded-full transition-all duration-300"
+          className="absolute right-2 sm:right-6 md:right-12 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white p-3 min-w-[44px] min-h-[44px] rounded-full transition-all duration-300 flex items-center justify-center"
           style={{ zIndex: 20 }}
           aria-label="Next slide"
         >
@@ -140,7 +140,7 @@ const Home: React.FC = () => {
         </button>
 
         {/* Dot indicators */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-2" style={{ zIndex: 20 }}>
+        <div className="absolute bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2 flex gap-2" style={{ zIndex: 20 }}>
           {images.map((_, index) => (
             <button
               key={index}
@@ -156,7 +156,7 @@ const Home: React.FC = () => {
         </div>
 
         {/* Scroll indicator */}
-        <div className="absolute bottom-8 right-8 animate-bounce" style={{ zIndex: 20 }}>
+        <div className="absolute bottom-6 right-4 sm:bottom-8 sm:right-8 animate-bounce hidden sm:block" style={{ zIndex: 20 }}>
           <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
           </svg>

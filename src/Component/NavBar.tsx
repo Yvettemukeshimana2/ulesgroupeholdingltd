@@ -51,11 +51,11 @@
        <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-6">
          <div className="flex items-center justify-between h-16 sm:h-20">
            {/* Logo */}
-           <Link to="/" className="flex items-center">
+           <Link to="/" className="flex items-center shrink-0 min-w-0">
              <img
                src={logo}
                alt="Ules Group Holding LTD Logo"
-               className="h-10 sm:h-12 md:h-56 w-auto"
+               className="h-11 sm:h-12 md:h-14 w-auto max-h-[3.5rem] object-contain"
              />
            </Link>
 
@@ -65,7 +65,7 @@
                <Link
                  key={item.to}
                  to={item.to}
-                 className="text-xs lg:text-sm text-gray-700 hover:text-customBlue-950 transition-colors font-medium px-2 lg:px-3 py-2 rounded hover:bg-gray-100"
+                 className="text-sm lg:text-sm text-gray-700 hover:text-customBlue-950 transition-colors font-medium px-2 lg:px-3 py-2 rounded hover:bg-gray-100"
                >
                  {item.label}
                </Link>
@@ -84,12 +84,12 @@
 
          {/* Mobile Menu */}
          {isMenuOpen && (
-           <nav className="md:hidden pb-4 bg-white border-t border-gray-200 flex flex-col gap-1">
+           <nav className="md:hidden pb-4 bg-white border-t border-gray-200 flex flex-col gap-0.5">
              {navItems.map((item) => (
                <Link
                  key={item.to}
                  to={item.to}
-                 className="block py-2 px-4 text-sm text-gray-700 hover:text-customBlue-950 hover:bg-gray-50 transition-colors rounded"
+                 className="block py-3.5 px-4 text-base text-gray-800 hover:text-customBlue-950 hover:bg-gray-50 transition-colors rounded-lg min-h-[48px] flex items-center"
                  onClick={toggleMenu}
                >
                  {item.label}

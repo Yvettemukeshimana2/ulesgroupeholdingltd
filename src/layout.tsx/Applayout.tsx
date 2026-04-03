@@ -5,10 +5,11 @@ import { Outlet } from "react-router-dom";
    
 const AppLayout = () => {
   return (
-    <div className="max-w-screen-3xl mx-auto flex justify-center flex-col font-lato  dark:bg-dark-background">
-     
+    <div className="max-w-screen-3xl mx-auto flex justify-center flex-col font-lato min-w-0 dark:bg-dark-background">
       <NavBar />
-      <div className="">{<Outlet />}</div>
+      <main className="min-w-0 pt-16 sm:pt-20">
+        <Outlet />
+      </main>
       {/* <WhatsAppChatButton/> */}
       <Footer companyName="ules groupe holding LTD" year={2024} />
     </div>

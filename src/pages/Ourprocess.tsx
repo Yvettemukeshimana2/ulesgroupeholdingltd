@@ -51,12 +51,12 @@ const OurProcess: React.FC = () => {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-6 px-2">
             <span className="bg-gradient-to-r from-customBlue-950 to-white bg-clip-text text-transparent">
               Why Choose Us
             </span>
           </h2>
-          <p className="text-xl text-gray-100 max-w-3xl mx-auto">
+          <p className="text-lg sm:text-xl text-gray-100 max-w-3xl mx-auto px-2">
             Discover what sets us apart and why we're the trusted choice for engineering excellence
           </p>
           <div className="flex justify-center mt-8">

@@ -16,6 +16,19 @@ import t4 from "../assets/will.jpeg";
 /* ─────────────────────────────────────────────
    DESIGN TOKENS
 ───────────────────────────────────────────── */
+function useNarrow() {
+  const [narrow, setNarrow] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches
+  );
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const fn = () => setNarrow(mq.matches);
+    mq.addEventListener("change", fn);
+    return () => mq.removeEventListener("change", fn);
+  }, []);
+  return narrow;
+}
+
 const C = {
   ink:    "#0b0f1a",
   ink2:   "#1c2333",
@@ -61,6 +74,7 @@ const departments = [
    HERO
 ───────────────────────────────────────────── */
 const Hero = () => {
+  const narrow = useNarrow();
   const [idx, setIdx]      = useState(0);
   const [animKey, setKey]  = useState(0);
   const [paused, setPause] = useState(false);
@@ -80,7 +94,16 @@ const Hero = () => {
 
   return (
     <div
-      style={{ position: "relative", height: "100vh", minHeight: 680, background: C.ink, overflow: "hidden", display: "flex", alignItems: "stretch" }}
+      style={{
+        position: "relative",
+        height: narrow ? "auto" : "100vh",
+        minHeight: narrow ? 520 : 680,
+        background: C.ink,
+        overflow: "hidden",
+        display: "flex",
+        flexDirection: narrow ? "column" : "row",
+        alignItems: "stretch",
+      }}
       onMouseEnter={() => setPause(true)}
       onMouseLeave={() => setPause(false)}
     >
@@ -95,13 +118,24 @@ const Hero = () => {
       </svg>
 
       {/* Left text panel */}
-      <div style={{ position: "relative", zIndex: 10, width: "48%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 6% 0 8%", background: `linear-gradient(105deg, ${C.ink} 0%, ${C.ink} 75%, transparent 100%)` }}>
+      <div style={{
+        position: "relative",
+        zIndex: 10,
+        width: narrow ? "100%" : "48%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        padding: narrow ? "28px 20px 16px" : "0 6% 0 8%",
+        background: narrow
+          ? `linear-gradient(180deg, ${C.ink} 0%, ${C.ink} 92%, ${C.ink2} 100%)`
+          : `linear-gradient(105deg, ${C.ink} 0%, ${C.ink} 75%, transparent 100%)`,
+      }}>
         <div key={`tag-${animKey}`} style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 32, animation: "fup 0.6s 0.2s both" }}>
           <div style={{ width: 28, height: 1.5, background: C.goldL }} />
           <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.28em", textTransform: "uppercase", color: C.goldL }}>Ules Group Holding LTD</span>
         </div>
 
-        <h1 style={{ margin: 0, fontFamily: "'Fraunces', Georgia, serif", fontSize: "clamp(3rem,5.5vw,5.2rem)", fontWeight: 900, lineHeight: 1.02, color: C.white, letterSpacing: "-0.02em" }}>
+        <h1 style={{ margin: 0, fontFamily: "'Fraunces', Georgia, serif", fontSize: narrow ? "clamp(2.25rem, 7vw, 3.5rem)" : "clamp(3rem,5.5vw,5.2rem)", fontWeight: 900, lineHeight: 1.02, color: C.white, letterSpacing: "-0.02em" }}>
           The People<br />
           <span style={{ WebkitTextStroke: `1.5px ${C.goldL}`, color: "transparent" }}>Behind</span>
           <br />
@@ -134,7 +168,7 @@ const Hero = () => {
       </div>
 
       {/* Right photo */}
-      <div style={{ flex: 1, position: "relative", overflow: "hidden" }}>
+      <div style={{ flex: 1, position: "relative", overflow: "hidden", minHeight: narrow ? 340 : undefined, width: "100%" }}>
         <div key={`ph-${animKey}`} style={{ position: "absolute", inset: 0, animation: "slideIn 0.9s cubic-bezier(0.22,1,0.36,1) both" }}>
           <div style={{ position: "absolute", inset: 0, zIndex: 2, background: `linear-gradient(to right, ${C.ink} 0%, transparent 18%)` }} />
           <div style={{ position: "absolute", inset: 0, zIndex: 2, background: "linear-gradient(to top, rgba(11,15,26,0.7) 0%, transparent 50%)" }} />
@@ -145,7 +179,17 @@ const Hero = () => {
         </div>
 
         {/* Thumbnail row */}
-        <div style={{ position: "absolute", bottom: 24, right: 24, zIndex: 10, display: "flex", gap: 8 }}>
+        <div style={{
+          position: "absolute",
+          bottom: narrow ? 16 : 24,
+          ...(narrow ? { left: "50%", transform: "translateX(-50%)", right: "auto" } : { right: 24, left: "auto" }),
+          zIndex: 10,
+          display: "flex",
+          gap: 8,
+          flexWrap: "wrap",
+          justifyContent: "center",
+          maxWidth: narrow ? "calc(100% - 24px)" : "none",
+        }}>
           {heroSlides.map((sl, i) => (
             <button key={i} onClick={() => go(i)} title={sl.name}
               style={{ width: i === idx ? 56 : 44, height: i === idx ? 56 : 44, borderRadius: "50%", overflow: "hidden", padding: 0, border: i === idx ? `2.5px solid ${C.goldL}` : "2px solid rgba(255,255,255,0.2)", cursor: "pointer", background: "none", flexShrink: 0, transform: i === idx ? "translateY(-5px)" : "none", boxShadow: i === idx ? `0 0 18px ${C.gold}70` : "none", transition: "all 0.4s cubic-bezier(0.34,1.56,0.64,1)" }}>
@@ -173,10 +217,11 @@ const Hero = () => {
    ADVISORY BANNER
 ───────────────────────────────────────────── */
 const AdvisoryBanner = () => {
+  const narrow = useNarrow();
   const [hov, setHov] = useState(false);
   return (
     <div style={{ background: C.cream, borderBottom: `1px solid ${C.line}` }}>
-      <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 40px" }}>
+      <div style={{ maxWidth: 1240, margin: "0 auto", padding: narrow ? "0 16px" : "0 40px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16, padding: "48px 0 0" }}>
           <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.3em", textTransform: "uppercase", color: C.gold }}>01 — Strategic Level</span>
           <div style={{ flex: 1, height: 1, background: C.line }} />
@@ -184,25 +229,25 @@ const AdvisoryBanner = () => {
 
         <div
           onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
-          style={{ display: "flex", alignItems: "stretch", gap: 0, margin: "32px 0 48px", borderRadius: 20, overflow: "hidden", border: `1px solid ${hov ? C.goldL + "60" : C.line}`, boxShadow: hov ? `0 24px 60px rgba(184,146,42,0.15), 0 4px 24px rgba(0,0,0,0.06)` : "0 4px 24px rgba(0,0,0,0.06)", transition: "all 0.4s ease" }}
+          style={{ display: "flex", flexDirection: narrow ? "column" : "row", alignItems: "stretch", gap: 0, margin: "32px 0 48px", borderRadius: 20, overflow: "hidden", border: `1px solid ${hov ? C.goldL + "60" : C.line}`, boxShadow: hov ? `0 24px 60px rgba(184,146,42,0.15), 0 4px 24px rgba(0,0,0,0.06)` : "0 4px 24px rgba(0,0,0,0.06)", transition: "all 0.4s ease" }}
         >
-          <div style={{ width: 5, background: `linear-gradient(to bottom, ${C.gold}, ${C.goldL})`, flexShrink: 0 }} />
-          <div style={{ width: 140, background: C.navy, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10, padding: "40px 20px", flexShrink: 0 }}>
+          <div style={{ width: narrow ? "100%" : 5, height: narrow ? 4 : "auto", background: `linear-gradient(to ${narrow ? "right" : "bottom"}, ${C.gold}, ${C.goldL})`, flexShrink: 0 }} />
+          <div style={{ width: narrow ? "100%" : 140, background: C.navy, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 10, padding: narrow ? "24px 16px" : "40px 20px", flexShrink: 0 }}>
             <div style={{ width: 64, height: 64, borderRadius: "50%", border: `1.5px solid ${C.goldL}50`, display: "flex", alignItems: "center", justifyContent: "center", background: `${C.gold}18` }}>
               <FaCompass style={{ fontSize: 26, color: C.goldL }} />
             </div>
             <span style={{ fontSize: 9, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.goldL, textAlign: "center" }}>Strategic<br />Advisory</span>
           </div>
-          <div style={{ flex: 1, background: C.white, padding: "36px 40px", display: "flex", flexDirection: "column", justifyContent: "center", gap: 10 }}>
+          <div style={{ flex: 1, background: C.white, padding: narrow ? "24px 18px" : "36px 40px", display: "flex", flexDirection: "column", justifyContent: "center", gap: 10 }}>
             <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 4 }}>
-              <div style={{ padding: "3px 12px", background: `${C.gold}15`, border: `1px solid ${C.gold}40`, borderRadius: 20, fontSize: 10, fontWeight: 700, color: C.gold, letterSpacing: "0.12em", textTransform: "uppercase" }}>Strategic Level</div>
+              <div style={{ padding: "3px 12px", background: `${C.gold}15`, border: `1px solid ${C.gold}40`, borderRadius: 20, fontSize: narrow ? 11 : 10, fontWeight: 700, color: C.gold, letterSpacing: "0.12em", textTransform: "uppercase" }}>Strategic Level</div>
             </div>
-            <h2 style={{ margin: 0, fontSize: "clamp(1.6rem,2.5vw,2.1rem)", fontWeight: 800, color: C.ink, fontFamily: "'Fraunces', Georgia, serif", lineHeight: 1.2 }}>Business Mentor &amp; Advisor</h2>
-            <p style={{ margin: 0, fontSize: 14.5, color: C.slate, lineHeight: 1.75, maxWidth: 560 }}>
+            <h2 style={{ margin: 0, fontSize: narrow ? "clamp(1.35rem,4.5vw,1.85rem)" : "clamp(1.6rem,2.5vw,2.1rem)", fontWeight: 800, color: C.ink, fontFamily: "'Fraunces', Georgia, serif", lineHeight: 1.2 }}>Business Mentor &amp; Advisor</h2>
+            <p style={{ margin: 0, fontSize: narrow ? 15 : 14.5, color: C.slate, lineHeight: 1.75, maxWidth: 560 }}>
               Provides high-level strategic guidance, long-term vision, and mentorship to the executive team. Supports critical leadership decisions and accelerates the company's growth trajectory.
             </p>
           </div>
-          <div style={{ width: 280, background: C.cream, padding: "36px 32px", display: "flex", flexDirection: "column", justifyContent: "center", gap: 10, borderLeft: `1px solid ${C.line}`, flexShrink: 0 }}>
+          <div style={{ width: narrow ? "100%" : 280, background: C.cream, padding: narrow ? "24px 18px" : "36px 32px", display: "flex", flexDirection: "column", justifyContent: "center", gap: 10, borderLeft: narrow ? "none" : `1px solid ${C.line}`, borderTop: narrow ? `1px solid ${C.line}` : "none", flexShrink: 0 }}>
             <p style={{ margin: "0 0 8px", fontSize: 10, fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: C.gold }}>Key Responsibilities</p>
             {["Strategic advice & guidance", "Long-term vision alignment", "Leadership decision support", "Company growth acceleration"].map((r, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 10 }}>
@@ -221,6 +266,7 @@ const AdvisoryBanner = () => {
    MD FEATURE
 ───────────────────────────────────────────── */
 const MDFeature = () => {
+  const narrow = useNarrow();
   const [hov, setHov] = useState(false);
   const mdResponsibilities = [
     { Icon: FaFlag,      label: "Strategic Direction" },
@@ -230,15 +276,15 @@ const MDFeature = () => {
   ];
   return (
     <div style={{ background: C.white, borderBottom: `1px solid ${C.line}` }}>
-      <div style={{ maxWidth: 1240, margin: "0 auto", padding: "0 40px" }}>
+      <div style={{ maxWidth: 1240, margin: "0 auto", padding: narrow ? "0 16px" : "0 40px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16, padding: "48px 0 0" }}>
-          <span style={{ fontSize: 9, fontWeight: 800, letterSpacing: "0.3em", textTransform: "uppercase", color: C.gold }}>02 — Executive Leadership</span>
+          <span style={{ fontSize: narrow ? 10 : 9, fontWeight: 800, letterSpacing: "0.3em", textTransform: "uppercase", color: C.gold }}>02 — Executive Leadership</span>
           <div style={{ flex: 1, height: 1, background: C.line }} />
         </div>
 
         <div
           onMouseEnter={() => setHov(true)} onMouseLeave={() => setHov(false)}
-          style={{ display: "grid", gridTemplateColumns: "380px 1fr", gap: 0, margin: "32px 0 48px", borderRadius: 24, overflow: "hidden", border: `1px solid ${hov ? C.blue + "40" : C.line}`, boxShadow: hov ? "0 32px 80px rgba(15,30,60,0.15), 0 4px 24px rgba(0,0,0,0.06)" : "0 4px 24px rgba(0,0,0,0.06)", transition: "all 0.4s ease" }}
+          style={{ display: "grid", gridTemplateColumns: narrow ? "1fr" : "380px 1fr", gap: 0, margin: "32px 0 48px", borderRadius: 24, overflow: "hidden", border: `1px solid ${hov ? C.blue + "40" : C.line}`, boxShadow: hov ? "0 32px 80px rgba(15,30,60,0.15), 0 4px 24px rgba(0,0,0,0.06)" : "0 4px 24px rgba(0,0,0,0.06)", transition: "all 0.4s ease" }}
         >
           <div style={{ position: "relative", background: C.navy, overflow: "hidden" }}>
             <img src={t1} alt="Dr. Byimana Jean Bosco" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top center", display: "block", transform: hov ? "scale(1.04)" : "scale(1)", transition: "transform 0.7s ease", minHeight: 320 }} />
@@ -252,18 +298,18 @@ const MDFeature = () => {
             </div>
           </div>
 
-          <div style={{ background: C.white, padding: "44px 44px", display: "flex", flexDirection: "column", justifyContent: "center", gap: 20 }}>
+          <div style={{ background: C.white, padding: narrow ? "28px 20px" : "44px 44px", display: "flex", flexDirection: "column", justifyContent: "center", gap: 20 }}>
             <div>
               <div style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "4px 14px", background: `${C.navy}0e`, borderRadius: 20, border: `1px solid ${C.navy}20`, marginBottom: 16 }}>
                 <div style={{ width: 6, height: 6, borderRadius: "50%", background: C.gold }} />
-                <span style={{ fontSize: 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.navy }}>Managing Director</span>
+                <span style={{ fontSize: narrow ? 11 : 10, fontWeight: 700, letterSpacing: "0.18em", textTransform: "uppercase", color: C.navy }}>Managing Director</span>
               </div>
-              <p style={{ margin: 0, fontSize: 15, color: C.slate, lineHeight: 1.8, maxWidth: 520 }}>
+              <p style={{ margin: 0, fontSize: narrow ? 16 : 15, color: C.slate, lineHeight: 1.8, maxWidth: 520 }}>
                 Provides overall leadership and strategic direction for Ules Group Holding LTD. Represents the company externally and supervises all executive departments, ensuring alignment with the company's long-term vision.
               </p>
             </div>
 
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+            <div style={{ display: "grid", gridTemplateColumns: narrow ? "1fr" : "1fr 1fr", gap: 12 }}>
               {mdResponsibilities.map(({ Icon, label }, i) => (
                 <div key={i} style={{ display: "flex", alignItems: "center", gap: 10, padding: "10px 14px", borderRadius: 10, background: C.cream, border: `1px solid ${C.line}` }}>
                   <div style={{ width: 30, height: 30, borderRadius: 8, background: `${C.navy}12`, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
@@ -485,6 +531,7 @@ const SLabel = ({ num, tag, title, sub }: { num: string; tag: string; title: str
    PAGE
 ───────────────────────────────────────────── */
 const TeamPage = () => {
+  const narrow = useNarrow();
   const execTeam: ExPerson[] = [
     { name: "COO", role: "Chief Operations Officer", img: "", Icon: FaCogs, color: "#b45309",
       bio: "Oversees daily operations, project execution, procurement, manufacturing coordination, and administration across all operational units.",
@@ -544,7 +591,7 @@ const TeamPage = () => {
           .supp-grid  { grid-template-columns: 1fr; }
           .spec-grid  { grid-template-columns: 1fr; }
           .dept-grid  { grid-template-columns: 1fr; }
-          .val-grid   { grid-template-columns: repeat(2, 1fr); }
+          .val-grid   { grid-template-columns: 1fr; }
         }
       `}</style>
 
@@ -555,7 +602,7 @@ const TeamPage = () => {
 
         {/* STATS BAR */}
         <div style={{ background: C.ink, borderBottom: `1px solid rgba(255,255,255,0.06)` }}>
-          <div style={{ maxWidth: 1240, margin: "0 auto", padding: "22px 40px", display: "flex", alignItems: "center", flexWrap: "wrap", gap: 32 }}>
+          <div style={{ maxWidth: 1240, margin: "0 auto", padding: narrow ? "20px 16px" : "22px 40px", display: "flex", alignItems: "center", flexWrap: "wrap", gap: narrow ? 20 : 32 }}>
             {[["6","Departments"],["10+","Team Members"],["3","C-Suite Officers"],["1","Shared Vision"]].map(([n,l],i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 16 }}>
                 {i > 0 && <div style={{ width: 1, height: 32, background: "rgba(255,255,255,0.1)" }} />}
@@ -565,7 +612,7 @@ const TeamPage = () => {
                 </div>
               </div>
             ))}
-            <p style={{ marginLeft: "auto", fontSize: 13, color: "rgba(255,255,255,0.4)", maxWidth: 320, lineHeight: 1.7 }}>
+            <p style={{ marginLeft: narrow ? 0 : "auto", fontSize: narrow ? 14 : 13, color: "rgba(255,255,255,0.4)", maxWidth: 320, lineHeight: 1.7, width: narrow ? "100%" : "auto" }}>
               A professional, lean structure designed for agility, accountability and sustainable growth.
             </p>
           </div>
@@ -579,7 +626,7 @@ const TeamPage = () => {
 
         {/* 03 EXECUTIVE MANAGEMENT */}
         <div style={{ background: C.cream, borderBottom: `1px solid ${C.line}` }}>
-          <div style={{ maxWidth: 1240, margin: "0 auto", padding: "64px 40px" }}>
+          <div style={{ maxWidth: 1240, margin: "0 auto", padding: narrow ? "48px 16px" : "64px 40px" }}>
             <SLabel num="03" tag="Executive Management" title="The Executive Team" sub="Three C-suite officers driving operations, technology, and digital transformation." />
             <div className="exec-grid">
               {execTeam.map((p, i) => <ExecCard key={i} p={p} />)}

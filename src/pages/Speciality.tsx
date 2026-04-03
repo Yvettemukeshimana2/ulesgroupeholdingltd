@@ -33,17 +33,17 @@ const Specialties: React.FC = () => {
         transition={{ duration: 0.8 }}
         className="max-w-6xl mx-auto px-4"
       >
-        <h2 className="text-4xl md:text-4xl font-bold text-center mb-4">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4 px-2">
           <span className="text-customBlue-950  bg-clip-text text-transparent">
             Our Specialties
           </span>
         </h2>
-        <p className="text-center text-gray-600 mb-6 mx-auto">
+        <p className="text-center text-base sm:text-lg text-gray-600 mb-8 mx-auto max-w-3xl px-2">
           We combine deep technical knowledge with innovative thinking and strong
           industry connections to deliver best-in-class solutions.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
           {specialtiesData.map((specialty, index) => (
             <motion.div
               key={index}
@@ -65,7 +65,7 @@ const Specialties: React.FC = () => {
                 <h3 className="text-2xl font-semibold mb-4 text-gray-800">
                   {specialty.title}
                 </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <p className="text-gray-600 text-base leading-relaxed">
                   {specialty.description}
                 </p>
               </div>

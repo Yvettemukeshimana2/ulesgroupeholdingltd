@@ -88,16 +88,16 @@ const OurServices: React.FC = () => {
       <style>{styles}</style>
 
       {/* Header Section */}
-      <div className="max-w-7xl mx-auto px-4 mb-3">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 mb-3">
         <div className="text-center mb-5">
-          <h1 className="text-5xl md:text-4xl font-bold heading-gradient  min-h-20">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold heading-gradient min-h-[4.5rem] sm:min-h-20">
             {displayedText}
             {displayedText.length < fullText.length && <span className="typing-cursor"></span>}
           </h1>
           <div className="flex justify-center mb-6">
             <div className="h-1 w-24 bg-gradient-to-r from-customBlue-950 to-black rounded-full"></div>
           </div>
-          <p className="text-xl text-gray-600  mx-auto">
+          <p className="text-lg sm:text-xl text-gray-600 mx-auto max-w-3xl px-1">
             We provide comprehensive solutions designed to meet your business needs with excellence and innovation.
           </p>
         </div>
@@ -127,14 +127,14 @@ const OurServices: React.FC = () => {
                 </h2>
 
                 {/* Description */}
-                <p className="text-gray-600 text-sm leading-relaxed mb-4 flex-grow">
+                <p className="text-gray-600 text-base leading-relaxed mb-4 flex-grow">
                   {service.description}
                 </p>
 
                 {/* Features */}
                 <div className="mb-6 space-y-2">
                   {service.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center text-sm text-gray-700">
+                    <div key={idx} className="flex items-center text-base text-gray-700">
                       <i className="fa fa-check text-customBlue-950 mr-2"></i>
                       <span>{feature}</span>
                     </div>
@@ -142,11 +142,11 @@ const OurServices: React.FC = () => {
                 </div>
 
                 {/* Button */}
-                <Link to={service.link} className="mt-auto">
-                  <button className="w-full py-3 px-4 bg-customBlue-950 hover:bg-black text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg">
+                <a href={service.link} target="_blank" rel="noopener noreferrer" className="mt-auto block">
+                  <button type="button" className="w-full min-h-[48px] py-3.5 px-4 text-base bg-customBlue-950 hover:bg-black text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 active:scale-95 shadow-md hover:shadow-lg">
                     Learn More
                   </button>
-                </Link>
+                </a>
               </div>
             </div>
           ))}
@@ -154,13 +154,13 @@ const OurServices: React.FC = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="max-w-7xl mx-auto px-4 bg-gradient-to-b from-gray-700 to-gray-600 ">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 bg-gradient-to-b from-gray-700 to-gray-600 ">
         <div className="bg-gradient-to-r from-customBlue-950 to-black rounded-xl overflow-hidden shadow-2xl">
-          <div className="py-12 px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <div className="py-10 sm:py-12 px-4 sm:px-8 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
               Explore All Our Services
             </h2>
-            <p className="text-gray-100 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-gray-100 text-base sm:text-lg mb-8 max-w-2xl mx-auto">
               Discover our complete range of solutions and find the perfect fit for your organization.
             </p>
             <Link to="/venue">

@@ -6,10 +6,8 @@ import React from "react";
 import OurTeam from "./Ourteam";
 const AboutUs1: React.FC = () => {
   return (
-    <div className="    ">
-      <div className="pt-36">
-        <OurTeam />
-      </div>
+    <div className="min-w-0">
+      <OurTeam />
     </div>
   );
 };

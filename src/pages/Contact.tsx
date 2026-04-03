@@ -72,12 +72,12 @@ const ContactUsPage: React.FC = () => {
       <style>{styles}</style>
 
       {/* Header */}
-      <div className="max-w-7xl mx-auto px-4 text-center mb-16">
-        <h1 className="text-3xl md:text-4xl font-bold heading-gradient mb-4 min-h-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center mb-12 sm:mb-16">
+        <h1 className="text-3xl sm:text-4xl font-bold heading-gradient mb-4 min-h-14 sm:min-h-16">
           {displayedText}
           {displayedText.length < fullText.length && <span className="typing-cursor"></span>}
         </h1>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto px-1">
           Get in touch with us. We're here to help with your engineering and environmental needs.
         </p>
         <div className="flex justify-center mt-6">

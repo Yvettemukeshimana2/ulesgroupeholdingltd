@@ -35,14 +35,14 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
       </div>
 
       <div className="relative z-10">
-        <div className="max-w-7xl mx-auto px-4 py-16">
-          <div className="grid grid-cols-4 gap-8 mb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 mb-12">
             {/* Company Info */}
             <div className="space-y-6">
-              <h3 className="text-2xl font-bold bg-gradient-to-r from-white to-customBlue-950 bg-clip-text text-transparent mb-4">
+              <h3 className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-white to-customBlue-950 bg-clip-text text-transparent mb-4">
                 {companyName}
               </h3>
-              <p className="text-base text-gray-300 leading-relaxed">
+              <p className="text-base sm:text-base text-gray-300 leading-relaxed">
                 Leading provider of engineering excellence and innovative solutions since {year}.
                 Committed to delivering quality and innovation in every project.
               </p>
@@ -50,13 +50,13 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
               {/* Newsletter Signup */}
               <div>
                 <h4 className="text-lg font-semibold mb-3 text-white">Stay Updated</h4>
-                <div className="flex flex-row gap-2">
+                <div className="flex flex-col sm:flex-row gap-2">
                   <input
                     type="email"
                     placeholder="Your email"
-                    className="flex-1 px-4 py-2 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-customBlue-950 text-sm"
+                    className="flex-1 min-h-[48px] px-4 py-3 bg-gray-800 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-customBlue-950 text-base"
                   />
-                  <button className="px-6 py-2 bg-customBlue-950 hover:bg-black text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 text-sm">
+                  <button type="button" className="min-h-[48px] px-6 py-3 bg-customBlue-950 hover:bg-black text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 text-base shrink-0">
                     Subscribe
                   </button>
                 </div>
@@ -145,8 +145,8 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
           </div>
 
           {/* Social Media & Bottom Section */}
-          <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex items-center space-x-4">
+          <div className="border-t border-gray-700 pt-8 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0 md:space-y-0">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-0 sm:space-x-4 w-full md:w-auto">
               <img
                 src={logo}
                 alt={`${companyName} Logo`}
@@ -170,8 +170,8 @@ const Footer: React.FC<FooterProps> = ({ companyName, year }) => {
               </div>
             </div>
 
-            <div className="text-right">
-              <p className="text-gray-400 text-sm">
+            <div className="text-center md:text-right w-full md:w-auto">
+              <p className="text-gray-400 text-sm sm:text-base">
                 © {year} <span className="text-teal-400 font-semibold">{companyName}</span>. All rights reserved.
               </p>
               <p className="text-gray-500 text-xs mt-1">
